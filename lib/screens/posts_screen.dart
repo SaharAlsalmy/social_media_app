@@ -8,13 +8,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   @override
   Widget build(BuildContext context) {
-        return ListView.builder(
+    return ListView.builder(
       itemCount: listPostModel.length,
-      itemBuilder: (context, index) =>
-          PostWidget(listPostModel[index]),
+      itemBuilder: (context, index) => PostWidget(listPostModel[index], index),
     );
   }
 }

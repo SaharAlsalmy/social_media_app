@@ -1,27 +1,20 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:social_media_app/data/post_provider.dart';
 import 'package:social_media_app/model/post_model.dart';
 
 class PostWidget extends StatefulWidget {
   PostModel post_model;
-  Function? function;
-  PostWidget(this.post_model, [this.function]);
+  int index;
+  PostWidget(this.post_model, this.index);
 
   @override
   State<PostWidget> createState() => _PostWidgetState();
 }
 
 class _PostWidgetState extends State<PostWidget> {
-
-    toggleIsLike() {
-    setState(() {});
-    widget.post_model.isFavorite = !(widget.post_model.isFavorite);
-      widget.function!();
-    
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -50,8 +43,8 @@ class _PostWidgetState extends State<PostWidget> {
                     : Colors.grey,
               ),
               onPressed: () {
-                toggleIsLike();
-
+                Provider.of<PostProvider>(context, listen: false)
+                    .toggleLike(widget.index);
               },
             ),
           ),

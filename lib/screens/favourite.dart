@@ -24,7 +24,7 @@ class _MyFavouriteState extends State<MyFavourite> {
           listPostModel
               .where((element) => element.isFavorite == true)
               .toList()[index],
-          updatePage),
+          index),
     );
   }
 }
